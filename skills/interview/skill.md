@@ -1,14 +1,14 @@
 ---
 description: "Conduct structured interviews to clarify requirements, explore decisions, solve problems, and produce actionable documents. Use this skill when: (1) exploring requirements before implementation, (2) making architecture or design decisions, (3) investigating problems or debugging, (4) prioritizing work or weighing tradeoffs, (5) designing workflows or processes, or the user says 'interview me', 'let's discuss', 'clarify requirements'. Do NOT use for product specs (use /product-spec), tech specs (use /tech-spec), or bug logging (use /bug)."
-argument-hint: "[topic to explore or define]"
+argument-hint: "[topic to spec, clarify, explore or define]"
 ---
 If not already in plan mode, enter plan mode now. Do not exit plan mode without explicit user approval.
 
-{{#if $ARGUMENTS}}
-**Topic to explore:** $ARGUMENTS
-{{else}}
-**No explicit topic provided.** Ask the user what they want to explore or define.
-{{/if}}
+**Arguments:** `$ARGUMENTS`
+
+**Routing:**
+- If arguments provided → Use above **Arguments:** as the topic to explore
+- If empty/blank → Ask the user what they want to explore or define
 
 ## CRITICAL: You MUST Interview First
 
@@ -16,18 +16,20 @@ If not already in plan mode, enter plan mode now. Do not exit plan mode without 
 
 Your primary job is to interview me, not to plan. Ask me literally everything needed to fully understand the topic. Make sure your questions are not obvious - they should probe deeper, challenge assumptions, and uncover things I haven't considered.
 
+The goal is to remove ambiguity and create clarity.
+
 **Rules:**
 - Ask 1-2 questions at a time
-- Base questions on my previous answers
+- Base questions on my previous answers and what is still unclear
 - Continue until the topic is thoroughly explored (minimum 3-4 rounds)
 
 ## Phase 1: Topic Type Detection
 
 First, determine what type of exploration this is (ask if unclear):
 
-1. **Feature/Spec Definition** - Scope, feature, bugfix, enhancement to be spec'ed
-2. **Architecture Decision** - Choosing between technical approaches, technologies, patterns
-3. **Problem-Solving** - Understanding and solving a specific problem
+1. **Feature/Spec Definition** - Scope, feature, bugfix, enhancement, impprovement to be spec'ed
+2. **Architecture Decision** - Choosing between technical approaches, technologies, patterns, solutions
+3. **Problem-Solving** - Understanding, clarifying and solving a specific problem
 4. **Investigation/Research** - Learning about something, gathering information
 5. **Prioritization/Tradeoffs** - Choosing between options, weighing criteria
 6. **Workflow/Process Design** - How work flows, automation, responsibilities
@@ -99,7 +101,7 @@ Interview me thoroughly using the AskUserQuestion tool. Adapt questions to the t
 Once the interview is complete, create a clear, actionable document.
 
 **For Feature/Spec Definition:**
-- Write a spec file (product-spec or tech-spec format)
+- Write a spec file (use /product-spec skill or /tech-spec skill)
 - Keep it concise but comprehensive
 - Avoid code examples unless absolutely necessary
 - Ask for filename if not obvious
